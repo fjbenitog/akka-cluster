@@ -11,19 +11,17 @@ object Dependencies {
   }
 
   object Akka {
-    val actor  = "com.typesafe.akka" %% "akka-actor"      % Versions.akka.main
-    val stream = "com.typesafe.akka" %% "akka-stream"     % Versions.akka.main
-    val http   = "com.typesafe.akka" %% "akka-http"       % Versions.akka.http
-    val json   = "de.heikoseeberger" %% "akka-http-circe" % Versions.akka.json
+    val actor   = "com.typesafe.akka" %% "akka-actor"   % Versions.akka.main
+    val stream  = "com.typesafe.akka" %% "akka-stream"  % Versions.akka.main
+    val cluster = "com.typesafe.akka" %% "akka-cluster" % Versions.akka.main
 
     object testkit {
       val common = "com.typesafe.akka" %% "akka-testkit"      % Versions.akka.main
-      val http   = "com.typesafe.akka" %% "akka-http-testkit" % Versions.akka.http
 
-      lazy val All = Seq(common, stream, http).map(_ % Test)
+      lazy val All = Seq(common).map(_ % Test)
     }
 
-    lazy val Common = Seq(actor, stream, http, json) ++ testkit.All
+    lazy val Common = Seq(actor, stream,cluster) ++ testkit.All
   }
 
   object Testing {

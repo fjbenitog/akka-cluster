@@ -4,7 +4,7 @@ import com.typesafe.sbt.packager.docker.DockerChmodType
 lazy val akkaVersion = "2.5.22"
 
 lazy val akkaCluster = (project in file("."))
-  .enablePlugins(DockerComposePlugin,RevolverPlugin, JavaAppPackaging)
+  .enablePlugins(DockerComposePlugin, RevolverPlugin, JavaAppPackaging)
   .settings(
     name := "akka-cluster",
     dockerImageCreationTask := (publishLocal in Docker).value,
