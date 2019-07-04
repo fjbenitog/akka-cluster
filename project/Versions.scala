@@ -13,9 +13,8 @@ object Versions {
   }
 
   object akka {
-    val main = "2.5.23"
-    val http = "10.1.8"
-    val json = "1.22.0"
+    val main       = "2.5.23"
+    val management = "1.0.1"
   }
 
   val aspectj = "1.9.4"
