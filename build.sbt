@@ -10,7 +10,10 @@ lazy val akkaCluster = (project in file("."))
     dockerImageCreationTask := (publishLocal in Docker).value,
     dockerBaseImage := "openjdk:8-jre-stretch",
     dockerUpdateLatest := true,
-//    dockerExposedPorts := Seq(8080,9095),
-    dockerAdditionalPermissions += (DockerChmodType.UserGroupWriteExecute, s"${(defaultLinuxInstallLocation in Docker).value}/sigar-loader"),
+//    dockerExposedPorts := Seq(2552),
+    javaOptions in Universal ++= Seq(
+      "-Dconfig.file=/config/application.conf",
+      "-Dlog4j.configurationFile=/config/log4j2.xml"
+    )
   )
   .settings(Dependencies.akkaCluster)

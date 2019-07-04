@@ -1,0 +1,38 @@
+version: "2"
+services:
+  seedNode:
+    image: akka-cluster
+    ports:
+      - '2552:2552'
+    environment:
+      CLUSTER_PORT: 2552
+      CLUSTER_IP: seedNode
+      SEED_IP: seedNode
+    volumes:
+      - ./configs/sandbox/conf:/config/
+
+  node1:
+    image: akka-cluster
+    ports:
+      - '2551:2551'
+    environment:
+      CLUSTER_PORT: 2551
+      CLUSTER_IP: node1
+      SEED_IP: seedNode
+    volumes:
+      - ./configs/sandbox/conf:/config/
+    depends_on:
+      - seedNode
+
+  node2:
+    image: akka-cluster
+    ports:
+      - '2550:2550'
+    environment:
+      CLUSTER_PORT: 2550
+      CLUSTER_IP: node2
+      SEED_IP: seedNode
+    volumes:
+      - ./configs/sandbox/conf:/config/
+    depends_on:
+      - seedNode

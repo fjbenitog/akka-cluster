@@ -2,12 +2,11 @@ package com.javi.cluster.bootstrap.server
 import akka.actor.ActorSystem
 import akka.cluster.Cluster
 import cats.effect.IO
-import com.typesafe.config.Config
 
 object ClusterServer {
 
-  def start(config: Config): IO[ClusterServer] = {
-    implicit val actorSystem: ActorSystem = ActorSystem("akka-cluster-system",config)
+  def start: IO[ClusterServer] = {
+    implicit val actorSystem: ActorSystem = ActorSystem("akka-cluster-system")
     IO(new ClusterServer())
   }
 
