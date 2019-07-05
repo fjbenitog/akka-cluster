@@ -3,11 +3,13 @@ import akka.actor.{Actor, ActorLogging, Props}
 import akka.cluster.Cluster
 import akka.cluster.ClusterEvent._
 
-object  SimpleClusterListener{
-  def props(cluster:Cluster) = Props(new SimpleClusterListener(cluster))
+object SimpleClusterListener {
+  def props(cluster: Cluster) = {
+    Props(new SimpleClusterListener(cluster))
+  }
 }
 
-class SimpleClusterListener(cluster:Cluster) extends Actor with ActorLogging {
+class SimpleClusterListener(cluster: Cluster) extends Actor with ActorLogging {
 
   // subscribe to cluster changes, re-subscribe when restart
   override def preStart(): Unit =

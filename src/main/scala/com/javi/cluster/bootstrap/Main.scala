@@ -10,7 +10,6 @@ object Main extends IOApp {
 
   def run(args: List[String]): IO[ExitCode] = {
 
-
     val server = for {
       _      <- IO(logger.debug("Starting Server ..."))
       server <- ClusterServer.start

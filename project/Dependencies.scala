@@ -15,6 +15,7 @@ object Dependencies {
     val stream     = "com.typesafe.akka"             %% "akka-stream"                       % Versions.akka.main
     val cluster    = "com.typesafe.akka"             %% "akka-cluster"                      % Versions.akka.main
     val discovery  = "com.typesafe.akka"             %% "akka-discovery"                    % Versions.akka.main
+    val tools      = "com.typesafe.akka"             %% "akka-cluster-tools"                % Versions.akka.main
     val management = "com.lightbend.akka.management" %% "akka-management-cluster-bootstrap" % Versions.akka.management
 
     object testkit {
@@ -23,7 +24,7 @@ object Dependencies {
       lazy val All = Seq(common).map(_ % Test)
     }
 
-    lazy val Common = Seq(actor, stream, cluster, discovery, management) ++ testkit.All
+    lazy val Common = Seq(actor, stream, cluster, discovery, tools, management) ++ testkit.All
   }
 
   object Testing {
