@@ -1,6 +1,6 @@
 package com.javi.cluster.bootstrap.server.sharding
 
-import akka.actor.{Props, ReceiveTimeout}
+import akka.actor.{ActorLogging, Props, ReceiveTimeout}
 import akka.cluster.sharding.ShardRegion.Passivate
 import akka.persistence.PersistentActor
 
@@ -19,7 +19,7 @@ object Counter {
   def props = Props(new Counter)
 }
 
-class Counter extends PersistentActor {
+class Counter extends PersistentActor with ActorLogging {
 
   var count = 0
 
@@ -27,8 +27,14 @@ class Counter extends PersistentActor {
 
   lazy val entityId: String = self.path.name
 
-  override def preStart(): Unit =
+  override def preStart(): Unit = {
+    log.info("Added Counter with Id: {}",entityId)
     context.setReceiveTimeout(120 seconds)
+  }
+
+  override def postStop(): Unit = {
+    log.info("Removed Counter with Id: {}",entityId)
+  }
 
   def updateState(event: CounterChanged): Unit =
     count += event.delta
