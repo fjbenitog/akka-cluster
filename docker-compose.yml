@@ -9,6 +9,7 @@ services:
       SEED_NODE3: node3
     volumes:
       - ./configs/sandbox/conf:/config/
+      - ./leveldb/node1:/leveldb
 
   node2:
     image: akka-cluster
@@ -19,6 +20,7 @@ services:
       SEED_NODE3: node3
     volumes:
       - ./configs/sandbox/conf:/config/
+      - ./leveldb/node2:/leveldb
 
   node3:
     image: akka-cluster
@@ -29,3 +31,4 @@ services:
       SEED_NODE3: node3
     volumes:
       - ./configs/sandbox/conf:/config/
+      - ./leveldb/node3:/leveldb

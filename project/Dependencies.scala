@@ -11,12 +11,15 @@ object Dependencies {
   }
 
   object Akka {
-    val actor      = "com.typesafe.akka"             %% "akka-actor"                        % Versions.akka.main
-    val stream     = "com.typesafe.akka"             %% "akka-stream"                       % Versions.akka.main
-    val cluster    = "com.typesafe.akka"             %% "akka-cluster"                      % Versions.akka.main
-    val discovery  = "com.typesafe.akka"             %% "akka-discovery"                    % Versions.akka.main
-    val tools      = "com.typesafe.akka"             %% "akka-cluster-tools"                % Versions.akka.main
-    val management = "com.lightbend.akka.management" %% "akka-management-cluster-bootstrap" % Versions.akka.management
+    val actor       = "com.typesafe.akka"             %% "akka-actor"                        % Versions.akka.main
+    val stream      = "com.typesafe.akka"             %% "akka-stream"                       % Versions.akka.main
+    val cluster     = "com.typesafe.akka"             %% "akka-cluster"                      % Versions.akka.main
+    val discovery   = "com.typesafe.akka"             %% "akka-discovery"                    % Versions.akka.main
+    val tools       = "com.typesafe.akka"             %% "akka-cluster-tools"                % Versions.akka.main
+    val sharding    = "com.typesafe.akka"             %% "akka-cluster-sharding"             % Versions.akka.main
+    val persistence = "com.typesafe.akka"             %% "akka-persistence"                  % Versions.akka.main
+    val management  = "com.lightbend.akka.management" %% "akka-management-cluster-bootstrap" % Versions.akka.management
+    val leveldb     = "org.fusesource.leveldbjni"     % "leveldbjni-all"                     % "1.8"
 
     object testkit {
       val common = "com.typesafe.akka" %% "akka-testkit" % Versions.akka.main
@@ -24,7 +27,17 @@ object Dependencies {
       lazy val All = Seq(common).map(_ % Test)
     }
 
-    lazy val Common = Seq(actor, stream, cluster, discovery, tools, management) ++ testkit.All
+    lazy val Common = Seq(
+      actor,
+      stream,
+      cluster,
+      discovery,
+      tools,
+      management,
+      sharding,
+      persistence,
+      leveldb
+    ) ++ testkit.All
   }
 
   object Testing {

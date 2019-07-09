@@ -4,9 +4,8 @@ import akka.cluster.Cluster
 import akka.cluster.ClusterEvent._
 
 object SimpleClusterListener {
-  def props(cluster: Cluster) = {
+  def props(cluster: Cluster) =
     Props(new SimpleClusterListener(cluster))
-  }
 }
 
 class SimpleClusterListener(cluster: Cluster) extends Actor with ActorLogging {
