@@ -22,8 +22,8 @@ class WorkerActor(topic: String, counterCoordinator: ActorRef) extends Actor wit
   def receive = {
     case Task(id) =>
       val entityId = generateEntityId
-      val payload = generatePayload
-      log.info("Executing Task({}): {} for entityId: {}", id,payload, entityId)
+      val payload  = generatePayload
+      log.info("Executing Task({}): {} for entityId: {}", id, payload, entityId)
       counterCoordinator ! EntityEnvelope(entityId, payload)
       counterCoordinator ! Get(entityId)
     case SubscribeAck(Subscribe(`topic`, None, `self`)) =>

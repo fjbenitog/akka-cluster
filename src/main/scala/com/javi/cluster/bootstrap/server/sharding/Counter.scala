@@ -28,13 +28,12 @@ class Counter extends PersistentActor with ActorLogging {
   lazy val entityId: String = self.path.name
 
   override def preStart(): Unit = {
-    log.info("Added Counter with Id: {}",entityId)
+    log.info("Added Counter with Id: {}", entityId)
     context.setReceiveTimeout(120 seconds)
   }
 
-  override def postStop(): Unit = {
-    log.info("Removed Counter with Id: {}",entityId)
-  }
+  override def postStop(): Unit =
+    log.info("Removed Counter with Id: {}", entityId)
 
   def updateState(event: CounterChanged): Unit =
     count += event.delta

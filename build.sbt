@@ -17,3 +17,13 @@ lazy val akkaCluster = (project in file("."))
     )
   )
   .settings(Dependencies.akkaCluster)
+
+// === Command Aliases
+
+addCommandAlias(
+  "launchLocal",
+  Seq(
+    "docker:publishLocal",
+    "dockerComposeUp"
+  ).mkString(";", ";", "")
+)

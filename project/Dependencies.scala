@@ -19,7 +19,8 @@ object Dependencies {
     val sharding    = "com.typesafe.akka"             %% "akka-cluster-sharding"             % Versions.akka.main
     val persistence = "com.typesafe.akka"             %% "akka-persistence"                  % Versions.akka.main
     val management  = "com.lightbend.akka.management" %% "akka-management-cluster-bootstrap" % Versions.akka.management
-    val leveldb     = "org.fusesource.leveldbjni"     % "leveldbjni-all"                     % "1.8"
+    val chill       = "com.twitter"                   %% "chill-akka"                        % Versions.akka.chill
+    val leveldb     = "org.fusesource.leveldbjni"     % "leveldbjni-all"                     % Versions.akka.lebeldb
 
     object testkit {
       val common = "com.typesafe.akka" %% "akka-testkit" % Versions.akka.main
@@ -36,7 +37,8 @@ object Dependencies {
       management,
       sharding,
       persistence,
-      leveldb
+      leveldb,
+      chill
     ) ++ testkit.All
   }
 

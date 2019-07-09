@@ -15,6 +15,8 @@ object Versions {
   object akka {
     val main       = "2.5.23"
     val management = "1.0.1"
+    val chill      = "0.9.3"
+    val lebeldb    = "1.8"
   }
 
   val aspectj = "1.9.4"
