@@ -6,7 +6,12 @@ This is a project to play with different akka features, but in particular in cre
 * Sharding
 * Streams
 
-In the following graph you can see the actor hierarchy:
+### Diagrams
 
+* **Actor Hierarchy**:
 
 ![Actor Hierarchy](./docs/Actor_Hierarchy.png)
+
+* **Actor Message Communication**:
+
+![Actor Message Communication](./docs/Actor_Message_Communication.png)
